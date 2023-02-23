@@ -2,7 +2,7 @@ import { Work_Sans, Nothing_You_Could_Do, Cabin } from '@next/font/google'
 
 export const ffHeaders = Work_Sans({ 
   subsets: ['latin'],
-  weight: ['400', '700', '800']
+  weight: '800'
 })
 
 export const ffSpecial = Nothing_You_Could_Do({ 

@@ -34,16 +34,59 @@ export default function Layout({ children }: Props) {
         </nav>
       </header>
       {children}
-      <footer>
-        <div>
-          <p>iconos redes sociales</p>
+      <footer className={styles.footer}>
+        <div className={styles.sn_icons}>
+          <a
+            href='https://www.fiverr.com/JoseJSanahuja'
+            target={'_blank'}
+            rel={'noreferrer'}
+          >
+            <Image
+              src="/fiverr.svg"
+              alt='fiver'
+              width={48}
+              height={48}
+            />
+          </a>
+          <a
+            href='https://www.github.com/josejaviersanahuja'
+            target={'_blank'}
+            rel={'noreferrer'}
+          >
+            <Image
+              src="/github.svg"
+              alt='fiver'
+              width={48}
+              height={48}
+            />
+          </a>
+          <a
+            href='mailto:zitrojj@gmail.com'
+            target={'_blank'}
+            rel={'noreferrer'}
+          >
+            <Image
+              src="/email.svg"
+              alt='fiver'
+              width={48}
+              height={48}
+            />
+          </a>
         </div>
         <nav>
-          <ul>
-            <li><Link href="/">nav1</Link></li>
-            <li><Link href="/">nav2</Link></li>
-            <li><Link href="/">nav3</Link></li>
-            <li><Link href="/">nav4</Link></li>
+          <ul className={styles.columns}>
+            
+              <li><Link href="/">nav1</Link></li>
+              <li><Link href="/">nav2</Link></li>
+              <li><Link href="/">nav3</Link></li>
+            
+          </ul>
+          <ul className={styles.columns}>
+            
+              <li><Link href="/">nav1</Link></li>
+              <li><Link href="/">nav2</Link></li>
+              <li><Link href="/">nav3</Link></li>
+            
           </ul>
         </nav>
         <div>

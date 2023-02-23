@@ -11,7 +11,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main className='main'>
-        <p >Hola parrafo 1 lo suficientemente largo para que pase algo distinto</p>
+        <p >Hola parrafo 1 lo suficientemente largo para que pase algo distinto ajhskjhakljh kjhkjh kjhk</p>
         
       </main>
     </>
