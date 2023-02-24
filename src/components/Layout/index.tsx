@@ -4,6 +4,7 @@ import React from 'react'
 import styles from './Layout.module.css'
 import { ffHeaders } from '@/styles/ts-styles'
 import { LinkButton } from '../Buttons'
+import PresentationCard from '../PresentationCard'
 
 type Props = {
   children: React.ReactNode
@@ -33,9 +34,9 @@ export default function Layout({ children }: Props) {
                 title='Btn1'
               />
             </li>
-            <li><LinkButton href="/a" title='Btn2'/></li>
-            <li><LinkButton href="/a" title='Btn3'/></li>
-            <li><LinkButton href="/a" title='Btn4'/></li>
+            <li><LinkButton href="/a" title='Btn2' /></li>
+            <li><LinkButton href="/a" title='Btn3' /></li>
+            <li><LinkButton href="/a" title='Btn4' /></li>
           </ul>
         </nav>
       </header>
@@ -47,56 +48,62 @@ export default function Layout({ children }: Props) {
             target={'_blank'}
             rel={'noreferrer'}
           >
-            <Image
-              src="/fiverr.svg"
-              alt='fiver'
-              width={48}
-              height={48}
-            />
+            <div>
+              <Image
+                src="/fiverr.svg"
+                alt='fiver'
+                width={48}
+                height={48}
+              />
+            </div>
           </a>
           <a
             href='https://www.github.com/josejaviersanahuja'
             target={'_blank'}
             rel={'noreferrer'}
           >
-            <Image
-              src="/github.svg"
-              alt='fiver'
-              width={48}
-              height={48}
-            />
+            <div>
+              <Image
+                src="/github.svg"
+                alt='fiver'
+                width={48}
+                height={48}
+              />
+            </div>
           </a>
           <a
             href='mailto:zitrojj@gmail.com'
             target={'_blank'}
             rel={'noreferrer'}
           >
-            <Image
-              src="/email.svg"
-              alt='fiver'
-              width={48}
-              height={48}
-            />
+            <div>
+              <Image
+                src="/email.svg"
+                alt='fiver'
+                width={48}
+                height={48}
+              />
+            </div>
           </a>
         </div>
         <nav>
           <ul className={styles.columns}>
-            
-              <li><Link href="/">nav1</Link></li>
-              <li><Link href="/">nav2</Link></li>
-              <li><Link href="/">nav3</Link></li>
-            
+
+            <li><Link href="/">nav1</Link></li>
+            <li><Link href="/">nav2</Link></li>
+            <li><Link href="/">nav3</Link></li>
+
           </ul>
           <ul className={styles.columns}>
-            
-              <li><Link href="/">nav1</Link></li>
-              <li><Link href="/">nav2</Link></li>
-              <li><Link href="/">nav3</Link></li>
-            
+
+            <li><Link href="/">nav1</Link></li>
+            <li><Link href="/">nav2</Link></li>
+            <li><Link href="/">nav3</Link></li>
+
           </ul>
         </nav>
         <div>
-          <p>Tarjeta</p>
+          <PresentationCard />
         </div>
       </footer>
     </>

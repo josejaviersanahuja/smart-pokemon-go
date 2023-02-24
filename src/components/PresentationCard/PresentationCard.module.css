@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  transform-style: preserve-3d;
+  transform:
+    perspective(5000px) rotateY(var(--rotateY)) rotateX(var(--rotateX));
+
+}
+
+.container::before,
+.container::after {
+  content: '';
+  position: absolute;
+  border-radius: inherit;
+}
+
+.container::after {
+  inset: -.4rem;
+  background: linear-gradient(-45deg,
+      rgb(var(--second-color-400-rgb)),
+      rgb(var(--prime-color-400-rgb)),
+      rgb(var(--third-color-400-rgb))
+    );
+  transform: translateZ(-25px);
+}
+
+.container::before {
+  inset: .15rem;
+  background: rgba(var(--black-rgb), 0.5);
+  filter: blur(10px);
+  transform: translateZ(-20px);
+}
+
+.container img {
+  border-radius: var(--border-radius);
+}
