@@ -1,0 +1,53 @@
+.btn-primary, .btn-secondary {
+  isolation: isolate;
+  position: relative;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  color: rgb(var(--white-rgb));
+  border-radius: var(--border-radius);
+  padding: var(--btn-padding);
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background-color: rgb(var(--prime-color-300-rgb));
+}
+
+.btn-secondary {
+  background-color: rgb(var(--third-color-400-rgb));
+}
+
+.link-primary,
+.link-secondary {
+  padding: var(--btn-padding);
+  border-radius: var(--border-radius);
+  color: rgb(var(--white-rgb));
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.link-primary {
+  background-color: rgb(var(--prime-color-300-rgb));
+}
+
+.link-secondary {
+  background-color: rgb(var(--third-color-400-rgb));
+}
+
+.active {
+  border: 1px solid rgb(var(--black-rgb));
+  box-shadow: var(--btn-box-shadow);
+}
+
+.btn-primary:hover, .btn-secondary:hover, .link-primary:hover,
+.link-secondary:hover {
+  box-shadow: var(--btn-box-shadow);
+}

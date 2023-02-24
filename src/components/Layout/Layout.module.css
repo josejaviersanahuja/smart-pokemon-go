@@ -11,7 +11,7 @@
 
 .header nav {
   grid-column: 1/3;
-  padding-top: 1rem;
+  padding-top: 2rem;
 }
 
 .navHeader {
@@ -59,9 +59,39 @@
   margin: auto;
 }
 
+.columns a {
+  text-decoration: none;
+  color: rgb(var(--white-rgb));
+  transition: var(--transition);
+}
+
+.columns a:hover {
+  color: rgb(var(--third-color-400-rgb));
+}
+
 .sn_icons {
   display: flex;
 }
+
+.sn_icons a {
+  position: relative;
+  overflow: hidden;
+}
+.sn_icons a::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(var(--third-color-400-rgb), 0.5);
+  transition: var(--transition);
+}
+
+.sn_icons a:hover::after {
+  top: 0;
+}
+
 @media screen and (min-width: 500px) {
   .header {
     padding: 2rem;

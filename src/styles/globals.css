@@ -2,7 +2,7 @@
 :root {
   --max-width: 1000px;
   --min-width: 360px;
-  --border-radius: 12px;
+  --border-radius: 5px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
@@ -34,6 +34,9 @@
 
   --third-color-400-rgb: 68, 148, 44;
   --third-color-100-rgb: 98, 188, 70;
+
+  --white-rgb: 214, 219, 220;
+  --black-rgb: 10, 10, 10;
 
   --primary-glow: conic-gradient(from 180deg at 50% 50%,
       rgb(var(--prime-color-400-rgb)) 0deg,
@@ -76,6 +79,10 @@
   --fs-body: var(--fs-400);
   --fs-caption: var(--fs-300);
   --fs-button: var(--fs-500);
+
+  --transition: all 0.2s ease-in-out;
+  --btn-padding: 0.35em;
+  --btn-box-shadow: .1rem .1rem .1rem .1rem rgba(var(--black-rgb), 0.5);
 }
 
 /* VARIABLES WHEN DARKMODE*/

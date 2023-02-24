@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import styles from './Layout.module.css'
 import { ffHeaders } from '@/styles/ts-styles'
+import { LinkButton } from '../Buttons'
 
 type Props = {
   children: React.ReactNode
@@ -26,10 +27,15 @@ export default function Layout({ children }: Props) {
         <h1 className={`${styles.title} ${ffHeaders.className}`}>Smart Pokemon Go</h1>
         <nav>
           <ul className={styles.navHeader}>
-            <li><Link href="/">nav1</Link></li>
-            <li><Link href="/">nav2</Link></li>
-            <li><Link href="/">nav3</Link></li>
-            <li><Link href="/">nav4</Link></li>
+            <li>
+              <LinkButton
+                href="/"
+                title='Btn1'
+              />
+            </li>
+            <li><LinkButton href="/a" title='Btn2'/></li>
+            <li><LinkButton href="/a" title='Btn3'/></li>
+            <li><LinkButton href="/a" title='Btn4'/></li>
           </ul>
         </nav>
       </header>

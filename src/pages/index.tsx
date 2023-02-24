@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
+import { Button } from '@/components/Buttons'
 
 export default function Home() {
   
@@ -12,7 +13,11 @@ export default function Home() {
       </Head>
       <main className='main'>
         <p >Hola parrafo 1 lo suficientemente largo para que pase algo distinto ajhskjhakljh kjhkjh kjhk</p>
-        
+        <Button
+          onClick={() => console.log('click')}
+          title='Click me'
+          styleType='secondary'
+        />
       </main>
     </>
   )
