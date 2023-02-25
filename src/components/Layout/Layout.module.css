@@ -7,6 +7,27 @@
   
   width: 100%;
   max-width: var(--max-width);
+  
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(5000px);
+}
+
+.header::after {
+  content: 'Zitrojj Dev';
+  position: absolute;
+  inset: 0;
+  top: -10rem;
+  background: transparent;
+
+  transform: translateZ(-1px);
+
+  font-size: 24rem;
+  text-align: center;
+  font-weight: 700;
+
+  overflow: hidden;
+  color: rgba(var(--third-color-400-rgb), 0.1);
 }
 
 .header nav {
@@ -39,6 +60,27 @@
   width: 100%;
   max-width: var(--max-width);
   min-height: 8rem;
+  
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(5000px);
+}
+
+.footer::after {
+  content: 'Web Developer';
+  position: absolute;
+  inset: 0;
+  top: -2rem;
+  background: transparent;
+
+  transform: translateZ(-60px);
+
+  font-size: 16rem;
+  text-align: center;
+  font-weight: 700;
+
+  overflow: hidden;
+  color: rgba(var(--second-color-400-rgb), 0.15);
 }
 
 .footer nav {

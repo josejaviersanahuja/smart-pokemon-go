@@ -14,9 +14,14 @@ export default function PresentationCard({ }: Props) {
       return
     }
     const { offsetWidth, offsetHeight } = container.current
-    console.log(clientX, clientY, offsetWidth, offsetHeight);
-    const x = (clientX - offsetWidth / offsetWidth)
-    const y = (clientY - offsetHeight / offsetHeight)
+
+    const middleX = window.innerWidth - 32 - (offsetWidth / 2)
+    const middleY = window.innerHeight - 16 - (offsetHeight / 2)
+    
+    
+    
+    const x = (clientX - middleX) * 105 / middleX
+    const y = (clientY - middleY) * 105 / middleY
     
     container.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`
   }
