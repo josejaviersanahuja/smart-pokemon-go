@@ -7,13 +7,15 @@ type BtnProps = {
   onClick: () => void
   title: string
   styleType?: 'primary' | 'secondary'
+  type?: 'submit' | 'button'
 }
 
-export function Button({onClick, title, styleType = 'primary'}: BtnProps) {
+export function Button({ onClick, title, styleType = 'primary', type = 'button' }: BtnProps) {
   return (
     <button
-    onClick={onClick}
-    className={styles[`btn-${styleType}`]}
+      onClick={onClick}
+      className={styles[`btn-${styleType}`]}
+      type={type}
     >
       {title}
     </button>
@@ -25,18 +27,18 @@ type LinkProps = {
   title: string
   styleType?: 'primary' | 'secondary'
 }
-export function LinkButton({href, title, styleType = 'primary'}: LinkProps) {
+export function LinkButton({ href, title, styleType = 'primary' }: LinkProps) {
 
-  const {pathname} = useRouter()
-  
-  const className = pathname === href 
+  const { pathname } = useRouter()
+
+  const className = pathname === href
     ? `${styles[`link-${styleType}`]} ${styles.active}`
     : styles[`link-${styleType}`]
 
   return (
     <Link
       href={href}
-      className={className} 
+      className={className}
     >
       {title}
     </Link>

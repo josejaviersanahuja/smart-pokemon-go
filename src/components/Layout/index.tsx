@@ -14,17 +14,19 @@ const ffTitle = ffHeaders.className
 
 export default function Layout({ children }: Props) {
 
-  console.log(ffTitle);
-
   return (
     <>
       <header className={styles.header}>
-        <Image
-          src="/logo512.svg"
-          alt="Logo"
-          width={72}
-          height={72}
-        />
+        <Link
+          href='/'
+        >
+          <Image
+            src="/logo512.svg"
+            alt="Logo"
+            width={72}
+            height={72}
+          />
+        </Link>
         <h1 className={`${styles.title} ${ffHeaders.className}`}>Smart Pokemon Go</h1>
         <nav>
           <ul className={styles.navHeader}>

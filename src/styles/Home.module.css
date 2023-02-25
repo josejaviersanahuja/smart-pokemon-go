@@ -1,0 +1,44 @@
+.section {
+  display: grid;
+  gap: 1rem;
+  place-items: center;
+}
+
+.article {
+  height: 100%;
+  padding: 1rem;
+}
+
+.article h1 {
+  margin: 1rem 0;
+  font-weight: 700;
+  font-size: var(--fs-title);
+}
+
+.article p {
+  font-size: var(--fs-subtitle);
+  margin: 0;
+}
+
+.form input[type="text"] {
+  margin: 0;
+  padding: 0.35rem;
+}
+
+@media (min-width: 50em) {
+  .section {
+    grid-template-columns: 2fr 1fr;
+    gap: 0;
+  }
+
+  .article h1 {
+    margin: 2rem 0;
+  }
+  .article p {
+    margin: 1rem 0;
+  }
+
+  .form {
+    margin-top: 2rem;
+  }
+}

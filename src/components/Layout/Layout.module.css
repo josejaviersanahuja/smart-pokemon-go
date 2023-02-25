@@ -76,11 +76,10 @@
   transform: translateZ(-60px);
 
   font-size: 16rem;
-  text-align: center;
   font-weight: 700;
 
   overflow: hidden;
-  color: rgba(var(--second-color-400-rgb), 0.15);
+  color: rgba(var(--second-color-400-rgb), 0.2);
 }
 
 .footer nav {
