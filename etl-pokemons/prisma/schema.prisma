@@ -1,0 +1,160 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model pokemons {
+  id                         Int                          @id
+  name                       String
+  pokemon_stats              pokemon_stats?
+  pokemon_types              pokemon_types[]
+  pokemon_fast_moves         pokemon_fast_moves[]
+  pokemon_charge_moves       pokemon_charge_moves[]
+  pokemon_elite_fast_moves   pokemon_elite_fast_moves[]
+  pokemon_elite_charge_moves pokemon_elite_charge_moves[]
+}
+
+model pokemon_stats {
+  pokemon_id   Int      @id @unique
+  pokemon      pokemons @relation(fields: [pokemon_id], references: [id])
+  base_stamina Int
+  base_attack  Int
+  base_defense Int
+  name         String
+}
+
+enum Type {
+  Bug
+  Dark
+  Dragon
+  Electric
+  Fairy
+  Fighting
+  Fire
+  Flying
+  Ghost
+  Grass
+  Ground
+  Ice
+  Normal
+  Poison
+  Psychic
+  Rock
+  Steel
+  Water
+}
+
+model fast_moves {
+  name                     String                     @id
+  type                     Type
+  power                    Int
+  energy_delta             Int
+  duration                 Int
+  stamina_loss_scaler      Float
+  pokemon_fast_moves       pokemon_fast_moves[]
+  pokemon_elite_fast_moves pokemon_elite_fast_moves[]
+}
+
+model charge_moves {
+  name                       String                       @id
+  type                       Type
+  power                      Int
+  energy_delta               Int
+  duration                   Int
+  stamina_loss_scaler        Float
+  critical_chance            Float
+  pokemon_charge_moves       pokemon_charge_moves[]
+  pokemon_elite_charge_moves pokemon_elite_charge_moves[]
+}
+
+model pokemon_types {
+  pokemon    pokemons @relation(fields: [pokemon_id], references: [id])
+  pokemon_id Int
+  type       Type
+
+  @@id([pokemon_id, type])
+}
+
+model type_effectiveness {
+  attacking_type Type  @id
+  vs_bug         Float
+  vs_dark        Float
+  vs_dragon      Float
+  vs_electric    Float
+  vs_fairy       Float
+  vs_fighting    Float
+  vs_fire        Float
+  vs_flying      Float
+  vs_ghost       Float
+  vs_grass       Float
+  vs_ground      Float
+  vs_ice         Float
+  vs_normal      Float
+  vs_poison      Float
+  vs_psychic     Float
+  vs_rock        Float
+  vs_steel       Float
+  vs_water       Float
+}
+
+model pokemon_fast_moves {
+  pokemon      pokemons   @relation(fields: [pokemon_id], references: [id])
+  pokemon_id   Int
+  fast_move    fast_moves @relation(fields: [fast_move_id], references: [name])
+  fast_move_id String
+
+  @@id([pokemon_id, fast_move_id])
+}
+
+model pokemon_charge_moves {
+  pokemon        pokemons     @relation(fields: [pokemon_id], references: [id])
+  pokemon_id     Int
+  charge_move    charge_moves @relation(fields: [charge_move_id], references: [name])
+  charge_move_id String
+
+  @@id([pokemon_id, charge_move_id])
+}
+
+model pokemon_elite_fast_moves {
+  pokemon      pokemons   @relation(fields: [pokemon_id], references: [id])
+  pokemon_id   Int
+  fast_move    fast_moves @relation(fields: [fast_move_id], references: [name])
+  fast_move_id String
+
+  @@id([pokemon_id, fast_move_id])
+}
+
+model pokemon_elite_charge_moves {
+  pokemon        pokemons     @relation(fields: [pokemon_id], references: [id])
+  pokemon_id     Int
+  charge_move    charge_moves @relation(fields: [charge_move_id], references: [name])
+  charge_move_id String
+
+  @@id([pokemon_id, charge_move_id])
+}
+
+model pvp_fast_moves {
+  move_id       Int    @id
+  name          String @unique
+  type          Type
+  power         Int
+  energy_delta  Int
+  turn_duration Int
+}
+
+model pvp_charge_moves {
+  move_id       Int    @id
+  name          String @unique
+  type          Type
+  power         Int
+  energy_delta  Int
+  turn_duration Int
+  buffs         Json
+}
