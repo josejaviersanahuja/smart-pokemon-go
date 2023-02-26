@@ -16,8 +16,9 @@ CREATE TABLE "pokemon_stats" (
     "base_attack" INTEGER NOT NULL,
     "base_defense" INTEGER NOT NULL,
     "name" TEXT NOT NULL,
+    "form" TEXT NOT NULL,
 
-    CONSTRAINT "pokemon_stats_pkey" PRIMARY KEY ("pokemon_id")
+    CONSTRAINT "pokemon_stats_pkey" PRIMARY KEY ("pokemon_id","form")
 );
 
 -- CreateTable
@@ -48,9 +49,11 @@ CREATE TABLE "charge_moves" (
 -- CreateTable
 CREATE TABLE "pokemon_types" (
     "pokemon_id" INTEGER NOT NULL,
-    "type" "Type" NOT NULL,
+    "form" TEXT NOT NULL,
+    "type" JSONB NOT NULL,
+    "pokemon_name" TEXT NOT NULL,
 
-    CONSTRAINT "pokemon_types_pkey" PRIMARY KEY ("pokemon_id","type")
+    CONSTRAINT "pokemon_types_pkey" PRIMARY KEY ("pokemon_id","form")
 );
 
 -- CreateTable
@@ -134,9 +137,6 @@ CREATE TABLE "pvp_charge_moves" (
 
     CONSTRAINT "pvp_charge_moves_pkey" PRIMARY KEY ("move_id")
 );
-
--- CreateIndex
-CREATE UNIQUE INDEX "pokemon_stats_pokemon_id_key" ON "pokemon_stats"("pokemon_id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "pvp_fast_moves_name_key" ON "pvp_fast_moves"("name");

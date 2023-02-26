@@ -10,13 +10,13 @@ type Pokemon = {
   name: string
   id: number
 }
-type GSP = {
-  props: {
-    pokemons: Pokemon[];
-  };
-}
 
-export const getStaticProps = async (): Promise<GSP> => {
+export const getStaticProps = async ()
+  : Promise<{
+    props: {
+      pokemons: Pokemon[];
+    };
+  }> => {
 
   try {
     const res = await fetch('https://pogoapi.net/api/v1/pokemon_names.json')
@@ -42,11 +42,7 @@ export const getStaticProps = async (): Promise<GSP> => {
   }
 }
 
-type Props = {
-  pokemons: Pokemon[]
-}
-
-export default function Home({ pokemons }: Props) {
+export default function Home({ pokemons }: { pokemons: Pokemon[] }) {
   const [selectedPokemon, setSelectedPokemon] = useState('')
   const router = useRouter()
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {

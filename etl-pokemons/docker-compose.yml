@@ -1,0 +1,27 @@
+# Use postgres/example user/password credentials
+version: '3.8'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: zitrojj
+      DATABASE_HOST: 127.0.0.1
+      POSTGRES_DB: pokemons
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - 80:80
+    depends_on:
+      - db
+# para crear la conexion en postgres 
+# recuerda que el host debe llamarse db

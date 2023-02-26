@@ -13,7 +13,7 @@ datasource db {
 model pokemons {
   id                         Int                          @id
   name                       String
-  pokemon_stats              pokemon_stats?
+  pokemon_stats              pokemon_stats[]
   pokemon_types              pokemon_types[]
   pokemon_fast_moves         pokemon_fast_moves[]
   pokemon_charge_moves       pokemon_charge_moves[]
@@ -22,12 +22,15 @@ model pokemons {
 }
 
 model pokemon_stats {
-  pokemon_id   Int      @id @unique
+  pokemon_id   Int
   pokemon      pokemons @relation(fields: [pokemon_id], references: [id])
   base_stamina Int
   base_attack  Int
   base_defense Int
   name         String
+  form         String
+
+  @@id([pokemon_id, form])
 }
 
 enum Type {
@@ -58,8 +61,6 @@ model fast_moves {
   energy_delta             Int
   duration                 Int
   stamina_loss_scaler      Float
-  pokemon_fast_moves       pokemon_fast_moves[]
-  pokemon_elite_fast_moves pokemon_elite_fast_moves[]
 }
 
 model charge_moves {
@@ -70,16 +71,16 @@ model charge_moves {
   duration                   Int
   stamina_loss_scaler        Float
   critical_chance            Float
-  pokemon_charge_moves       pokemon_charge_moves[]
-  pokemon_elite_charge_moves pokemon_elite_charge_moves[]
 }
 
 model pokemon_types {
-  pokemon    pokemons @relation(fields: [pokemon_id], references: [id])
-  pokemon_id Int
-  type       Type
+  pokemon      pokemons @relation(fields: [pokemon_id], references: [id])
+  pokemon_id   Int
+  form         String
+  type         Json
+  pokemon_name String
 
-  @@id([pokemon_id, type])
+  @@id([pokemon_id, form])
 }
 
 model type_effectiveness {
@@ -105,39 +106,35 @@ model type_effectiveness {
 }
 
 model pokemon_fast_moves {
-  pokemon      pokemons   @relation(fields: [pokemon_id], references: [id])
+  pokemon      pokemons @relation(fields: [pokemon_id], references: [id])
   pokemon_id   Int
-  fast_move    fast_moves @relation(fields: [fast_move_id], references: [name])
   fast_move_id String
-
-  @@id([pokemon_id, fast_move_id])
+  form         String
+  @@id([pokemon_id, fast_move_id, form])
 }
 
 model pokemon_charge_moves {
-  pokemon        pokemons     @relation(fields: [pokemon_id], references: [id])
+  pokemon        pokemons @relation(fields: [pokemon_id], references: [id])
   pokemon_id     Int
-  charge_move    charge_moves @relation(fields: [charge_move_id], references: [name])
   charge_move_id String
-
-  @@id([pokemon_id, charge_move_id])
+  form           String
+  @@id([pokemon_id, charge_move_id, form])
 }
 
 model pokemon_elite_fast_moves {
   pokemon      pokemons   @relation(fields: [pokemon_id], references: [id])
   pokemon_id   Int
-  fast_move    fast_moves @relation(fields: [fast_move_id], references: [name])
   fast_move_id String
-
-  @@id([pokemon_id, fast_move_id])
+  form         String
+  @@id([pokemon_id, fast_move_id, form])
 }
 
 model pokemon_elite_charge_moves {
   pokemon        pokemons     @relation(fields: [pokemon_id], references: [id])
   pokemon_id     Int
-  charge_move    charge_moves @relation(fields: [charge_move_id], references: [name])
   charge_move_id String
-
-  @@id([pokemon_id, charge_move_id])
+  form           String
+  @@id([pokemon_id, charge_move_id, form])
 }
 
 model pvp_fast_moves {
@@ -156,5 +153,5 @@ model pvp_charge_moves {
   power         Int
   energy_delta  Int
   turn_duration Int
-  buffs         Json
+  buffs         Json?
 }
