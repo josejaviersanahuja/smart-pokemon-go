@@ -49,6 +49,7 @@ export default function Home({ pokemons }: { pokemons: Pokemon[] }) {
     e.preventDefault()
     router.push(`/pokemon/${selectedPokemon}`)
   }
+  
   return (
     <>
       <Head>
