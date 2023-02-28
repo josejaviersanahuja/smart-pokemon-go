@@ -92,7 +92,7 @@ export type AttackType = {
   vs_dragon: number
   vs_electric: number
   vs_fairy: number
-  vs_fight: number
+  vs_fighting: number
   vs_fire: number
   vs_flying: number
   vs_ghost: number
@@ -106,3 +106,6 @@ export type AttackType = {
   vs_steel: number
   vs_water: number
 }
+
+export const getKeyValue = <U extends keyof T, T extends object>(key: U) => (obj: T) =>
+  obj[key];
