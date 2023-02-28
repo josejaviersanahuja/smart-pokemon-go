@@ -1,4 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { AttackType } from '@/constants'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Pool } from 'pg'
 // import util from 'util'
@@ -18,116 +19,10 @@ export type Data = {
   base_attack: number
   base_defense: number
   base_stamina: number
-  fast_moves: {
-    mone_id: number
-    name: string
-    type: string
-    power: number
-    energy_delta: number
-    turn_duration: number
-    attacking_type: string
-    vs_bug: number
-    vs_dark: number
-    vs_dragon: number
-    vs_electric: number
-    vs_fairy: number
-    vs_fight: number
-    vs_fire: number
-    vs_flying: number
-    vs_ghost: number
-    vs_grass: number
-    vs_ground: number
-    vs_ice: number
-    vs_normal: number
-    vs_poison: number
-    vs_psychic: number
-    vs_rock: number
-    vs_steel: number
-    vs_water: number
-  }[]
-  charged_moves: {
-    move_id: number
-    name: string
-    type: string
-    power: number
-    energy_delta: number
-    turn_duration: number
-    buffs: string | null
-    attacking_type: string
-    vs_bug: number
-    vs_dark: number
-    vs_dragon: number
-    vs_electric: number
-    vs_fairy: number
-    vs_fight: number
-    vs_fire: number
-    vs_flying: number
-    vs_ghost: number
-    vs_grass: number
-    vs_ground: number
-    vs_ice: number
-    vs_normal: number
-    vs_poison: number
-    vs_psychic: number
-    vs_rock: number
-    vs_steel: number
-    vs_water: number
-  }[]
-  elite_fast_moves: {
-    mone_id: number
-    name: string
-    type: string
-    power: number
-    energy_delta: number
-    turn_duration: number
-    attacking_type: string
-    vs_bug: number
-    vs_dark: number
-    vs_dragon: number
-    vs_electric: number
-    vs_fairy: number
-    vs_fight: number
-    vs_fire: number
-    vs_flying: number
-    vs_ghost: number
-    vs_grass: number
-    vs_ground: number
-    vs_ice: number
-    vs_normal: number
-    vs_poison: number
-    vs_psychic: number
-    vs_rock: number
-    vs_steel: number
-    vs_water: number
-  }[] | null[]
-  elite_charged_moves: {
-    move_id: number
-    name: string
-    type: string
-    power: number
-    energy_delta: number
-    turn_duration: number
-    buffs: string | null
-    attacking_type: string
-    vs_bug: number
-    vs_dark: number
-    vs_dragon: number
-    vs_electric: number
-    vs_fairy: number
-    vs_fight: number
-    vs_fire: number
-    vs_flying: number
-    vs_ghost: number
-    vs_grass: number
-    vs_ground: number
-    vs_ice: number
-    vs_normal: number
-    vs_poison: number
-    vs_psychic: number
-    vs_rock: number
-    vs_steel: number
-    vs_water: number
-  }[] | null[]
+  fast_moves: AttackType[]
+  charged_moves: AttackType[]
+  elite_fast_moves: AttackType[] | null[]
+  elite_charged_moves: AttackType[] | null[]
 }
 
 export default async function handler(

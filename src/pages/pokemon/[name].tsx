@@ -1,3 +1,4 @@
+import { AttackType, POKEMON_TYPES } from '@/constants'
 import assert from 'assert'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -43,10 +44,15 @@ export default function Pokemon({ }) {
     base_stamina: currentForm?.base_stamina,
   }
 
+  let veryStrongAgainst = []
+  let strongAgainst = []
+  let weakAgainst = []
+  let veryWeakAgainst = []
   const fastMoves = currentForm?.fast_moves.map((attack) => {
+
     return {
       name: attack.name,
-      type: attack.type,
+      type: POKEMON_TYPES[attack.type],
       power: attack.power,
       energy_delta: attack.energy_delta,
       duration: attack.turn_duration * 0.5,
@@ -60,7 +66,7 @@ export default function Pokemon({ }) {
   const chargeMoves = currentForm?.charged_moves.map((attack) => {
     return {
       name: attack.name,
-      type: attack.type,
+      type: POKEMON_TYPES[attack.type],
       power: attack.power,
       energy_delta: attack.energy_delta,
       duration: attack.turn_duration * 0.5,
@@ -76,7 +82,7 @@ export default function Pokemon({ }) {
     if (!attack) return null
     return {
       name: attack.name,
-      type: attack.type,
+      type: POKEMON_TYPES[attack.type],
       power: attack.power,
       energy_delta: attack.energy_delta,
       duration: attack.turn_duration * 0.5,
@@ -91,7 +97,7 @@ export default function Pokemon({ }) {
     if (!attack) return null
     return {
       name: attack.name,
-      type: attack.type,
+      type: POKEMON_TYPES[attack.type],
       power: attack.power,
       energy_delta: attack.energy_delta,
       duration: attack.turn_duration * 0.5,
@@ -120,4 +126,14 @@ export default function Pokemon({ }) {
     </main>
   </>
   )
+
+  function refactorTypeEffectiveness(
+    attack: AttackType,
+    veryStrongAgainst : Array<any>,
+    strongAgainst : Array<any>,
+    weakAgainst : Array<any>,
+    veryWeakAgainst : Array<any>
+    ) {
+      
+    }
 }

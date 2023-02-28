@@ -1,4 +1,4 @@
-export const pokemon_types : {
+export const POKEMON_TYPES : {
   [index: string] : {
     image: string
     type: string
@@ -76,4 +76,33 @@ export const pokemon_types : {
     image: "/Pokemon_Type_Icon_Water.svg",
     type: "Agua"
   }
+}
+
+export type AttackType = {
+  move_id: number
+  name: string
+  type: string
+  power: number
+  energy_delta: number
+  turn_duration: number
+  buffs?: string | null
+  attacking_type: string
+  vs_bug: number
+  vs_dark: number
+  vs_dragon: number
+  vs_electric: number
+  vs_fairy: number
+  vs_fight: number
+  vs_fire: number
+  vs_flying: number
+  vs_ghost: number
+  vs_grass: number
+  vs_ground: number
+  vs_ice: number
+  vs_normal: number
+  vs_poison: number
+  vs_psychic: number
+  vs_rock: number
+  vs_steel: number
+  vs_water: number
 }
