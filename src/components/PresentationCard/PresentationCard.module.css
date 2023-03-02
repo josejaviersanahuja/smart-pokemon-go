@@ -37,4 +37,6 @@
 
 .container img {
   border-radius: var(--border-radius);
+  width: auto;
+  height: auto;
 }

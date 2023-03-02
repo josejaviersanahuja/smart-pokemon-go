@@ -1,9 +1,9 @@
-export const POKEMON_TYPES : {
-  [index: string] : {
+export const POKEMON_TYPES: {
+  [index: string]: {
     image: string
     type: string
   }
-}= {
+} = {
   "Bug": {
     image: "/Pokemon_Type_Icon_Bug.svg",
     type: "Bicho"
@@ -109,3 +109,10 @@ export type AttackType = {
 
 export const getKeyValue = <U extends keyof T, T extends object>(key: U) => (obj: T) =>
   obj[key];
+
+export type TypeObject = {
+  pokemon_name: string
+  form: string
+  pokemon_id: number
+  type: string[]
+}

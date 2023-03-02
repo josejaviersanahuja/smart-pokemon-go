@@ -113,7 +113,6 @@ export const seedTypeEffectiveness = async () => {
 
   const array1: [string, { [index: string]: number }][] = Object.entries(typeEffectiveness.data);
 
-  console.log(array1);
   const array2: TypeEffectiveness[] = array1.map((item) => {
     return {
       attacking_type: item[0],
@@ -238,8 +237,6 @@ export const seedPokemonAllMoves = async () => {
   /** There was an error in the api */
   const newPokemonChargeMoveList = new Array(...new Set(pokemonChargeMoveList.map((a) => JSON.stringify(a))))
     .map((e) => JSON.parse(e))
-
-  console.log(newPokemonChargeMoveList);
   
   const res = await prisma.pokemon_fast_moves.createMany({
     data: pokemonFastMoveList.map((pokemonFastMove) => ({
