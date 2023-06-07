@@ -85,32 +85,36 @@ CREATE TABLE "type_effectiveness" (
 CREATE TABLE "pokemon_fast_moves" (
     "pokemon_id" INTEGER NOT NULL,
     "fast_move_id" TEXT NOT NULL,
+    "form" TEXT NOT NULL,
 
-    CONSTRAINT "pokemon_fast_moves_pkey" PRIMARY KEY ("pokemon_id","fast_move_id")
+    CONSTRAINT "pokemon_fast_moves_pkey" PRIMARY KEY ("pokemon_id","fast_move_id","form")
 );
 
 -- CreateTable
 CREATE TABLE "pokemon_charge_moves" (
     "pokemon_id" INTEGER NOT NULL,
     "charge_move_id" TEXT NOT NULL,
+    "form" TEXT NOT NULL,
 
-    CONSTRAINT "pokemon_charge_moves_pkey" PRIMARY KEY ("pokemon_id","charge_move_id")
+    CONSTRAINT "pokemon_charge_moves_pkey" PRIMARY KEY ("pokemon_id","charge_move_id","form")
 );
 
 -- CreateTable
 CREATE TABLE "pokemon_elite_fast_moves" (
     "pokemon_id" INTEGER NOT NULL,
     "fast_move_id" TEXT NOT NULL,
+    "form" TEXT NOT NULL,
 
-    CONSTRAINT "pokemon_elite_fast_moves_pkey" PRIMARY KEY ("pokemon_id","fast_move_id")
+    CONSTRAINT "pokemon_elite_fast_moves_pkey" PRIMARY KEY ("pokemon_id","fast_move_id","form")
 );
 
 -- CreateTable
 CREATE TABLE "pokemon_elite_charge_moves" (
     "pokemon_id" INTEGER NOT NULL,
     "charge_move_id" TEXT NOT NULL,
+    "form" TEXT NOT NULL,
 
-    CONSTRAINT "pokemon_elite_charge_moves_pkey" PRIMARY KEY ("pokemon_id","charge_move_id")
+    CONSTRAINT "pokemon_elite_charge_moves_pkey" PRIMARY KEY ("pokemon_id","charge_move_id","form")
 );
 
 -- CreateTable
@@ -133,7 +137,7 @@ CREATE TABLE "pvp_charge_moves" (
     "power" INTEGER NOT NULL,
     "energy_delta" INTEGER NOT NULL,
     "turn_duration" INTEGER NOT NULL,
-    "buffs" JSONB NOT NULL,
+    "buffs" JSONB,
 
     CONSTRAINT "pvp_charge_moves_pkey" PRIMARY KEY ("move_id")
 );
@@ -154,22 +158,10 @@ ALTER TABLE "pokemon_types" ADD CONSTRAINT "pokemon_types_pokemon_id_fkey" FOREI
 ALTER TABLE "pokemon_fast_moves" ADD CONSTRAINT "pokemon_fast_moves_pokemon_id_fkey" FOREIGN KEY ("pokemon_id") REFERENCES "pokemons"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "pokemon_fast_moves" ADD CONSTRAINT "pokemon_fast_moves_fast_move_id_fkey" FOREIGN KEY ("fast_move_id") REFERENCES "fast_moves"("name") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
 ALTER TABLE "pokemon_charge_moves" ADD CONSTRAINT "pokemon_charge_moves_pokemon_id_fkey" FOREIGN KEY ("pokemon_id") REFERENCES "pokemons"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "pokemon_charge_moves" ADD CONSTRAINT "pokemon_charge_moves_charge_move_id_fkey" FOREIGN KEY ("charge_move_id") REFERENCES "charge_moves"("name") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "pokemon_elite_fast_moves" ADD CONSTRAINT "pokemon_elite_fast_moves_pokemon_id_fkey" FOREIGN KEY ("pokemon_id") REFERENCES "pokemons"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "pokemon_elite_fast_moves" ADD CONSTRAINT "pokemon_elite_fast_moves_fast_move_id_fkey" FOREIGN KEY ("fast_move_id") REFERENCES "fast_moves"("name") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
 ALTER TABLE "pokemon_elite_charge_moves" ADD CONSTRAINT "pokemon_elite_charge_moves_pokemon_id_fkey" FOREIGN KEY ("pokemon_id") REFERENCES "pokemons"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "pokemon_elite_charge_moves" ADD CONSTRAINT "pokemon_elite_charge_moves_charge_move_id_fkey" FOREIGN KEY ("charge_move_id") REFERENCES "charge_moves"("name") ON DELETE RESTRICT ON UPDATE CASCADE;

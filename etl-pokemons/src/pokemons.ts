@@ -1,6 +1,22 @@
 import axios from 'axios'
 import { prisma } from './prisma'
 
+export const testUpdatePokemon = () => {
+  prisma.pokemon_stats.update({
+    where: {
+      pokemon_id_form: {
+        form: "Adventure_hat_2020",
+        pokemon_id: 25
+      }
+    },
+    data: {
+      name: "Pikachu JJ"
+    }
+  }).then(res => {
+    console.log(res);
+  })
+}
+
 type Type = 'Bug' | 'Dark' | 'Dragon' | 'Electric' | 'Fairy' | 'Fighting' |
   'Fire' | 'Flying' | 'Ghost' | 'Grass' | 'Ground' | 'Ice' | 'Normal' |
   'Poison' | 'Psychic' | 'Rock' | 'Steel' | 'Water'

@@ -5,12 +5,16 @@ import {
   seedPokemons,
   seedPokemonStats,
   seedPokemonTypes,
-  seedTypeEffectiveness
+  seedTypeEffectiveness,
+  testUpdatePokemon
 } from './pokemons'
 
+// run npm i && npx prisma migrate dev --name init
+
 const main = async () => {
+  // await testUpdatePokemon()
   // await seedPokemons()
-  // await seedPokemonStats()
+  await seedPokemonStats()
   // await seedPokemonTypes()
   // await seedTypeEffectiveness()
   // await seedPokemonAllMoves()
